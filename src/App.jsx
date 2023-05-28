@@ -13,11 +13,11 @@ import { CssBaseline } from "@mui/material";
 
 function App() {
   return (
-    <div className="flex h-full">
+    <div className="flex flex-col h-screen sm:ml-[240px]">
       <CssBaseline />
       <Navbar />
-      <main className="flex-grow p-[2em]">
-        <div className="h-70px"/>
+      <main className="bg-red-500 flex-grow p-[2em]">
+        <div className="h-[80px]" />
         <Routes>
           <Route exact path="/" element={<Movies />} />
           <Route exact path="/movies/:id" element={<MovieInformation />} />
