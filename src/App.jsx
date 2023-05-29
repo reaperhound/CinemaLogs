@@ -10,10 +10,9 @@ import {
   Profile,
 } from "./components/Index";
 import { CssBaseline } from "@mui/material";
-import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
-  
+  // console.log(import.meta.env.VITE_TMDB_KEY);
 
   return (
     <div className="flex flex-col h-screen sm:ml-[240px]">

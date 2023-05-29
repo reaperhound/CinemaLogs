@@ -1,7 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+
+import { useGetMoviesQuery } from '../../services/tmdb';
 
 const Movies = () => {
-    console.log('Movies');
+  const {data} = useGetMoviesQuery();
+  console.log(data);
   return (
     <div>Movies</div>
   )
