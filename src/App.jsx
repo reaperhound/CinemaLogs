@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -10,8 +10,11 @@ import {
   Profile,
 } from "./components/Index";
 import { CssBaseline } from "@mui/material";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
+  
+
   return (
     <div className="flex flex-col h-screen sm:ml-[240px]">
       <CssBaseline />
