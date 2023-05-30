@@ -14,7 +14,7 @@ const Sidebar = () => {
     { label: "Animation", value: "aniation" },
   ];
   return (
-    <div className="bg-accent text-slate-300 text-3xl w-[240px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0">
+    <div className="bg-base-200  text-base-content border border-gray-500 text-3xl w-[240px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0">
       <h1 className="py-6 mx-auto">Logo</h1>
 
       {/* Categories */}

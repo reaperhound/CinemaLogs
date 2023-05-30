@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`navbar bg-primary text-primary-content justify-between ${
+        className={`navbar bg-primary text-primary-content justify-between border border-b-gray-500 ${
           !isMobile && "pl-[35%]"
         } `}
       >

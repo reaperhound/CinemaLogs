@@ -1,14 +1,31 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 
-import { useGetMoviesQuery } from '../../services/tmdb';
+import { useGetMoviesQuery } from "../../services/tmdb";
+import { MovieList } from "../Index";
 
 const Movies = () => {
-  const {data} = useGetMoviesQuery();
-  console.log(data);
-  return (
-    <div>Movies</div>
-  )
-}
+  const { data, isFetching, error } = useGetMoviesQuery();
 
-export default Movies
+  if (isFetching) {
+    return (
+      <h1 className="text-3xl">Loading ....</h1>
+    );
+  }
+
+  if(!data.results.length) {
+    return (
+      <div className="bg-black w-2/3 h-2/4">
+        <h1 className="text-3xl">No movies match that name</h1>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <MovieList movies={data} />
+    </div>
+  );
+};
+
+export default Movies;
