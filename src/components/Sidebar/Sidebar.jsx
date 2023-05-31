@@ -13,7 +13,6 @@ const Sidebar = () => {
     (state) => state.currentGenreOrCategory
   );
   console.log(genreIdOrCategoryName);
-  // console.log("genres", data);
   const dispatch = useDispatch();
   const categories = [
     { label: "Popular", value: "popular" },

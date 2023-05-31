@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchMovie } from "../../features/currentGenreOrCategory";
 
 const Search = () => {
-  console.log("Search");
+  const [query, setQuery] = useState("")
+  const dispatch = useDispatch();
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      console.log('Here', query);
+      dispatch(searchMovie(query))
+    }
+  }
   return (
     <div class="max-w-md mx-auto pr-[14vw]">
       <div class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
@@ -27,6 +36,9 @@ const Search = () => {
           type="text"
           id="search"
           placeholder="Search .."
+          onKeyDown={handleKeyPress}
+          onChange={e => setQuery(e.target.value)}
+          value={query}
         />
       </div>
     </div>

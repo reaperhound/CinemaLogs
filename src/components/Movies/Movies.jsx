@@ -6,10 +6,10 @@ import { MovieList } from "../Index";
 
 const Movies = () => {
   const [page, setpage] = useState(1)
-  const { genreIdOrCategoryName } = useSelector(
+  const { genreIdOrCategoryName, searchQuery } = useSelector(
     (state) => state.currentGenreOrCategory
   );
-  const { data, isFetching, error } = useGetMoviesQuery({ genreIdOrCategoryName });
+  const { data, isFetching, error } = useGetMoviesQuery({ genreIdOrCategoryName, page, searchQuery });
 
   if (isFetching) {
     return <h1 className="text-3xl">Loading ....</h1>;
