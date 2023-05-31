@@ -5,7 +5,7 @@ const Movie = ({ movie, i }) => {
   console.log(movie);
   const movieRef = useRef(null);
   useEffect(() => {
-    const delay = (i + 1) * 200;
+    const delay = (i + 1) * 100;
     const animationTimeout = setTimeout(() => {
       movieRef.current.style.opacity = 1;
     }, delay);
