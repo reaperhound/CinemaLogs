@@ -24,6 +24,7 @@ const Movie = ({ movie, i }) => {
       <Link to={`/movie/${movie.id}`} className="hover:cursor-pointer">
         {
           <img
+            loading="lazy"
             alt={movie.title}
             src={
               movie.poster_path
@@ -39,7 +40,7 @@ const Movie = ({ movie, i }) => {
         {movie.title.substring(0, 18)}
       </h1>
       <h1 className="text-center mb-2 font-medium ">
-        {movie.vote_average} &nbsp;
+        {movie.vote_average.toFixed(1)} &nbsp;
         <div className="rating rating-xs">
           <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
         </div>

@@ -19,6 +19,28 @@ const Sidebar = () => {
     { label: "Top Rated", value: "top_rated" },
     { label: "Upcoming", value: "upcoming" },
   ];
+
+  function getTheme() {
+    const htmlTag = document.documentElement;
+    const currentTheme = htmlTag.getAttribute('data-theme');
+  
+    // Listen for changes to the data-theme attribute
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.attributeName === 'data-theme') {
+          const newTheme = htmlTag.getAttribute('data-theme');
+          console.log('Theme changed:', newTheme);
+          // You can perform additional actions when the theme changes
+        }
+      }
+    });
+  
+    observer.observe(htmlTag, { attributes: true });
+  
+    return currentTheme;
+  }
+  console.log(getTheme());
+  
   return (
     <div className="bg-secondary-content animate-fade-right pb-32  duration-300 z-50 text-secondary border border-gray-500 text-3xl w-[240px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0">
       <h1 className="py-6 mx-auto animate-spin animate-once">
@@ -40,7 +62,7 @@ const Sidebar = () => {
                 <img
                   src={genreIcons[label.toLowerCase()]}
                   alt={label}
-                  className="bg-blend-color-"
+                  className=""
                 />
               </div>
             </div>
