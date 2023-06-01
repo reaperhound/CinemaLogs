@@ -31,7 +31,7 @@ const Movie = ({ movie, i }) => {
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
                 : `https://www.fillmurray.comm/200/200`
             }
-            className="rounded-lg shadow-lg mx-auto h-[300px]  hover:scale-110 ease-in-out duration-100 "
+            className="rounded-lg shadow-lg mx-auto sm:h-[300px] h-[200px]  hover:scale-110 ease-in-out duration-100 "
           />
         }
       </Link>
