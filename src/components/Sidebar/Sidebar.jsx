@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 import { useGetGenresQuery } from "../../services/TMDB";
+
+import { setTheme } from "../../features/currentTheme";
 import ReactLoading from "react-loading";
 import genreIcons from "../../assets/index";
 
@@ -20,29 +22,19 @@ const Sidebar = () => {
     { label: "Upcoming", value: "upcoming" },
   ];
 
-  function getTheme() {
-    const htmlTag = document.documentElement;
-    const currentTheme = htmlTag.getAttribute('data-theme');
-  
-    // Listen for changes to the data-theme attribute
-    const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
-        if (mutation.attributeName === 'data-theme') {
-          const newTheme = htmlTag.getAttribute('data-theme');
-          console.log('Theme changed:', newTheme);
-          // You can perform additional actions when the theme changes
-        }
-      }
-    });
-  
-    observer.observe(htmlTag, { attributes: true });
-  
-    return currentTheme;
-  }
-  console.log(getTheme());
-  
+  const currentTheme = useSelector((state) => state.themeSlice);
+
+  console.log("ThemeSlice", currentTheme);
+
+  // ${currentTheme === "winter" && 'bg-base-300 text-base-content'}
+  // ${currentTheme == "halloween" && 'bg-base-300 text-base-content'}
+
   return (
-    <div className="bg-secondary-content animate-fade-right pb-32  duration-300 z-50 text-secondary border border-gray-500 text-3xl w-[240px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0">
+    <div
+      className={`
+      bg-base-300 text-base-content
+      border animate-fade-right pb-32  duration-300 z-50  border-gray-500 text-3xl w-[240px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0`}
+    >
       <h1 className="py-6 mx-auto animate-spin animate-once">
         <img src={genreIcons.logo} alt="logo" className="w-1/3 mx-auto" />
       </h1>
@@ -62,7 +54,7 @@ const Sidebar = () => {
                 <img
                   src={genreIcons[label.toLowerCase()]}
                   alt={label}
-                  className=""
+                  className={`${currentTheme === "halloween" && "invert"}`}
                 />
               </div>
             </div>
@@ -88,7 +80,11 @@ const Sidebar = () => {
             >
               <div className="avatar placeholder mx-2">
                 <div className="bg-inherit text-neutral-content rounded-full w-8 mr-2">
-                  <img src={genreIcons[name.toLowerCase()]} alt={name} />
+                  <img
+                    src={genreIcons[name.toLowerCase()]}
+                    alt={name}
+                    className={`${currentTheme === "halloween" && "invert"}`}
+                  />
                 </div>
               </div>
               <p className="text-lg">{name}</p>
