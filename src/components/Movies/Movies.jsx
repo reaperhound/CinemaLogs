@@ -34,7 +34,7 @@ const Movies = () => {
   }
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-base-100  to-base-300 backdrop-blur-lg backdrop-brightness-95 min-h-[210vh] pt-10 ">
       <MovieList movies={data} />
     </div>
   );

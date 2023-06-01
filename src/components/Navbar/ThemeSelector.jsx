@@ -25,7 +25,7 @@ const ThemeSelector = () => {
         tabIndex="0"
         className="btn m-1  bg-inherit border-none hover:bg-primary-focus"
       >
-        <StyleIcon fontSize="large" />
+        <StyleIcon fontSize="large" className="hover:animate-wiggle"/>
       </label>
       <ul
         tabIndex="0"

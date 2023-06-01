@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`navbar bg-primary text-primary-content justify-between min-h-[8vh] border border-b-gray-500 `}
+        className={`navbar bg-gradient-to-r from-primary to-primary-focus text-primary-content justify-between min-h-[8vh] border border-b-gray-500 `}
       >
         {isMobile && (
           <button

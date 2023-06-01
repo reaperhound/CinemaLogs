@@ -26,18 +26,16 @@ const Sidebar = () => {
 
   console.log("ThemeSlice", currentTheme);
 
-  // ${currentTheme === "winter" && 'bg-base-300 text-base-content'}
-  // ${currentTheme == "halloween" && 'bg-base-300 text-base-content'}
 
   return (
     <div
       className={`
-      bg-base-300 text-base-content
+      text-base-content bg-gradient-to-r from-base-100 via-base-200 to-base-300 backdrop-blur-lg
       border animate-fade-right pb-32  duration-300 z-50  border-gray-500 text-3xl w-[240px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0`}
     >
-      <h1 className="py-6 mx-auto animate-spin animate-once">
+      <Link to={'/'} className="py-6 mx-auto animate-spin animate-once">
         <img src={genreIcons.logo} alt="logo" className="w-1/3 mx-auto" />
-      </h1>
+      </Link>
 
       {/* Categories */}
       <h2 className="text-lg pl-7  ">Categories</h2>

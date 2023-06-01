@@ -18,8 +18,8 @@ function App() {
     <div className="flex flex-col h-screen sm:ml-[240px]">
       <CssBaseline />
       <Navbar />
-      <main className="bg-base-100 flex-grow p-[2em]">
-        <div className="h-[80px]" />
+      <main className="bg-base-100 flex-grow ">
+        {/* <div className="h-[80px]" /> */}
         <Routes>
           <Route exact path="/" element={<Movies />} />
           <Route exact path="/movies/:id" element={<MovieInformation />} />
