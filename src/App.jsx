@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Movies />} />
           <Route exact path="/movies/:id" element={<MovieInformation />} />
-          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/profile/:id" element={<Profile />} />
           <Route exact path="/actors/:id" element={<Actors />} />
         </Routes>
       </main>

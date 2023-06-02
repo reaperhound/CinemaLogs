@@ -1,9 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Profile = () => {
-    console.log('Profile');
+  const { user: { username } } = useSelector(state => state.user)
   return (
-    <div>Profile</div>
+    <h1>
+      {username}
+    </h1>
   )
 }
 

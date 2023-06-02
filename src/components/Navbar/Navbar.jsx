@@ -1,15 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { createSessionId, fetchToken, moviesApi } from "../../utils";
 
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Search, Sidebar } from "../Index";
 import UserDropDown from "./UserDropDown";
 import ThemeSelector from "./ThemeSelector";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser, userSelector } from "../../features/auth";
 
 const Navbar = () => {
+  const dispatch = useDispatch()
   const [isMobile, setIsMobile] = useState(false);
   const [sideBarOpen, setSideBarOpen] = useState(false);
+  
+  const token = localStorage.getItem('request_token')
+  const sessionIdFromLocalStorage = localStorage.getItem('session_id')
+  
+  const { isAuthenticated, user } = useSelector((state) => state.user)
+
+  console.log('user',user);
+
+  useEffect(() => {
+    const loginUser = async () => {
+      if(token) {
+        if(sessionIdFromLocalStorage){
+          const { data: userData } = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`)
+
+          dispatch(setUser(userData))
+        } else {
+          const sessionId = await createSessionId();
+          const { data: userData } = await moviesApi.get(`/account?session_id=${sessionId}`)
+
+          dispatch(setUser(userData))
+        }
+      }
+    }
+    loginUser();
+  },[])
 
   useEffect(() => {
     function MobileScr() {
@@ -51,10 +79,18 @@ const Navbar = () => {
               <ClearIcon />
             </button>
           ) : (
-            <UserDropDown />
+            isAuthenticated ?
+            <UserDropDown /> :
+            <button className="btn" onClick={fetchToken}>
+              Login
+            </button>
           )
         ) : (
-          <UserDropDown />
+          isAuthenticated ?
+          <UserDropDown /> :
+          <button className="btn" onClick={fetchToken}>
+            Login
+          </button>
         )}
       </div>
       {sideBarOpen && <Sidebar />}
