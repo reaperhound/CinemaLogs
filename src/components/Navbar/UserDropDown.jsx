@@ -3,8 +3,19 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const UserDropDown = () => {
-  const { user } = useSelector((state) => state.user)
-  const { id, avatar: { gravatar: {hash} } } = user;
+  const { user } = useSelector((state) => state.user);
+  const {
+    id,
+    avatar: {
+      gravatar: { hash },
+    },
+  } = user;
+
+  const handleSignOut = () => {
+    localStorage.clear()
+    window.location.href = "/"
+  }
+  
   return (
     <div className="dropdown dropdown-bottom dropdown-end text-error">
       <label tabIndex={0} className="avatar m-1">
@@ -20,7 +31,9 @@ const UserDropDown = () => {
           <Link to={`/profile/:${id}`}>Profile</Link>
         </li>
         <li>
-          <a>Sign Out</a>
+          <button onClick={handleSignOut}>
+            <span>Sign Out</span>
+          </button>
         </li>
       </ul>
     </div>

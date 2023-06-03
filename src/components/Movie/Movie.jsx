@@ -21,7 +21,7 @@ const Movie = ({ movie, i }) => {
       className="text-base-content "
       style={{ opacity: 0, transition: "opacity 0.25s ease-in-out" }}
     >
-      <Link to={`/movie/${movie.id}`} className="hover:cursor-pointer relative">
+      <Link to={`/movies/${movie.id}`} className="hover:cursor-pointer relative">
         {
           <img
             loading="lazy"
