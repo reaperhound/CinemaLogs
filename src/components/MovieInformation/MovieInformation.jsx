@@ -214,7 +214,7 @@ const MovieInformation = () => {
         {data?.videos?.results?.length > 0 && (
           <iframe
             // autoPlay
-            className="lg:w-1/2 lg:h-1/2 w-3/4 h-3/4"
+            className="lg:w-1/2 lg:h-1/2 w-3/4 h-1/4"
             src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
             allow="autoplay"
             title="Trailer"
