@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ActorCarosal = ({ cast }) => {
-
   return (
-    <div className="flex bg-inherit h-[47vh] min-w-[80vw] mt-9 ">
+    <div className="flex bg-inherit min-w-[80vw] mt-9 ">
       {cast.map((actor, index) => {
         if (index < 10) {
           if (actor.profile_path) {
@@ -15,7 +15,9 @@ const ActorCarosal = ({ cast }) => {
                   alt={actor.name}
                   className="shadow-md mb-2 "
                 />
-                <span>{actor.name}</span>
+                <Link to={`/actors/${actor.id}`}>
+                  <span>{actor.name}</span>
+                </Link>
               </div>
             );
           }
