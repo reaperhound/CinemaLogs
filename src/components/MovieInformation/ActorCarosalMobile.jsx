@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ActorCarosalMobile = ({ cast }) => {
   return (
@@ -12,7 +13,11 @@ const ActorCarosalMobile = ({ cast }) => {
                   src={`https://image.tmdb.org/t/p/w185/${actor.profile_path}`}
                   alt={actor.name}
                 />
-                <span className="absolute text-white bottom-2 right-10">{actor.name}</span>
+                <Link to={`/actors/${actor.id}`}>
+                  <span className="absolute text-white bottom-2 right-10">
+                    {actor.name}
+                  </span>
+                </Link>
               </div>
             );
           }
