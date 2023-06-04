@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useGetMovieQuery, useGetReccomendationsQuery } from "../../services/TMDB";
+import {
+  useGetMovieQuery,
+  useGetReccomendationsQuery,
+} from "../../services/TMDB";
 import MoviesLoading from "../Movies/MoviesLoading";
 import { MovieList } from "../Index";
 import ActorCarosal from "./ActorCarosal";
@@ -11,27 +14,32 @@ import { useEffect } from "react";
 import PublicIcon from "@mui/icons-material/Public"; //website
 import TheatersIcon from "@mui/icons-material/Theaters"; //imdb
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary"; //trailer
-import { Favorite, FavoriteBorderOutlined, PlusOne, Remove } from "@mui/icons-material";
+import {
+  Favorite,
+  FavoriteBorderOutlined,
+  PlusOne,
+  Remove,
+} from "@mui/icons-material";
+import { Modal } from "@mui/material";
 
 const MovieInformation = () => {
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
-  const { data: reccomendations, isFetching: isReccFetching} = useGetReccomendationsQuery({list: '/recommendations', movie_id : id})
-  console.log('recc', reccomendations);
+  const { data: reccomendations, isFetching: isReccFetching } =
+    useGetReccomendationsQuery({ list: "/recommendations", movie_id: id });
+  console.log("recc", reccomendations);
   const currentTheme = useSelector((state) => state.themeSlice);
+
+  const [open, setOpen] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
 
-  const [isMovieFavorite, setisMovieFavorite] = useState(false)
-  const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false)
+  const [isMovieFavorite, setisMovieFavorite] = useState(false);
+  const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
 
-  const addToFavorites = () => {
+  const addToFavorites = () => {};
 
-  }
-
-  const addToWatchList = () => {
-
-  }
+  const addToWatchList = () => {};
 
   useEffect(() => {
     function MobileScr() {
@@ -57,12 +65,14 @@ const MovieInformation = () => {
     )
   );
   writing.push(
-    data?.credits.crew.find((member) => member.known_for_department == "Writing")
+    data?.credits.crew.find(
+      (member) => member.known_for_department == "Writing"
+    )
   );
   console.log("Direct", directors);
   return (
     <div
-      className={` p-2
+      className={`
     ${currentTheme === "halloween" ? "text-white" : "text-black"}
     `}
     >
@@ -94,7 +104,9 @@ const MovieInformation = () => {
         </h1>
 
         {/* title */}
-        <h1 className="sm:text-4xl text-3xl mt-1 lg:pt-3 font-bold">{data.title}</h1>
+        <h1 className="sm:text-4xl text-3xl mt-1 lg:pt-3 font-bold">
+          {data.title}
+        </h1>
         <div className="mt-3 lg:mt-6">
           {/* rating */}
           <span className="text-md font-semibold py-2  px-4 w-[50px] mt-1 h-6 bg-primary">
@@ -120,22 +132,26 @@ const MovieInformation = () => {
 
       {/* Overview */}
       <div className="sm:ml-[560px] sm:mt-10 mt-10 pl-3  ">
-        <h2 className="text-2xl font-bold bg-primary lg:w-[6vw] w-[32vw] ">Overview</h2>
+        <h2 className="text-2xl font-bold bg-primary lg:w-[6vw] w-[32vw] ">
+          Overview
+        </h2>
         <p className="sm:w-[20vw] mt-5">{data.overview}</p>
       </div>
 
       {/* //Add 2 fav, watchlist etc.. */}
       <div className="flex gap-4 mt-10 flex-wrap pl-3">
-        <button className="btn bg-primary-focus text-primary-content hover:text-white" 
+        <button
+          className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToFavorites}
-        > 
-        {isMovieFavorite ? 'unFav' : 'Fav'} &nbsp;
-        {isMovieFavorite ? <FavoriteBorderOutlined /> : <Favorite />}
+        >
+          {isMovieFavorite ? "unFav" : "Fav"} &nbsp;
+          {isMovieFavorite ? <FavoriteBorderOutlined /> : <Favorite />}
         </button>
-        <button className="btn bg-primary-focus text-primary-content hover:text-white"
+        <button
+          className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToWatchList}
         >
-            Watchlist&nbsp;
+          Watchlist&nbsp;
           {isMovieWatchlisted ? <Remove /> : <PlusOne />}
         </button>
       </div>
@@ -148,13 +164,17 @@ const MovieInformation = () => {
             &nbsp; Website
           </button>
         </Link>
-        <Link target="blank" rel="noopener noreferrer" to={`https://www.imdb.com/title/${data?.imdb_id}`}>
+        <Link
+          target="blank"
+          rel="noopener noreferrer"
+          to={`https://www.imdb.com/title/${data?.imdb_id}`}
+        >
           <button className="btn btn-secondary text-secondary-content">
             <TheatersIcon />
             &nbsp; IMDB
           </button>
         </Link>
-        <Link onClick={() => {}} to="#">
+        <Link onClick={() => setOpen(true)} to="#">
           <button className="btn btn-secondary text-secondary-content">
             <VideoLibraryIcon />
             &nbsp; Trailer
@@ -175,13 +195,33 @@ const MovieInformation = () => {
       </div>
 
       <div className="pl-3 mt-10">
-        <h1 className="text-2xl font-bold bg-primary mb-7 lg:w-[13%] w-[60%]">Reccomendations</h1>
-        {
-          reccomendations 
-          ? <MovieList movies={reccomendations}/>
-          : <h1>No Reccomendations</h1>
-        }
+        <h1 className="text-2xl font-bold bg-primary lg:ml-[4rem] mb-7 lg:w-[13%] w-[60%]">
+          Recommendation
+        </h1>
+        {reccomendations ? (
+          <MovieList movies={reccomendations} />
+        ) : (
+          <h1>No Recommendations</h1>
+        )}
       </div>
+
+      <Modal
+        closeAfterTransition
+        className="flex items-center justify-center"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        {data?.videos?.results?.length > 0 && (
+          <iframe
+            // autoPlay
+            className="lg:w-1/2 lg:h-1/2 w-3/4 h-3/4"
+            src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
+            allow="autoplay"
+            title="Trailer"
+            frameborder="0"
+          />
+        )}
+      </Modal>
     </div>
   );
 };

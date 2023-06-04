@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   useGetActorDetailsQuery,
@@ -8,6 +8,7 @@ import MoviesLoading from "../Movies/MoviesLoading";
 import { useSelector } from "react-redux";
 import PublicIcon from "@mui/icons-material/Public"; //website
 import { MovieList } from "../Index";
+import { Modal } from "@mui/material";
 
 const Actors = () => {
   const { id } = useParams();
@@ -16,6 +17,8 @@ const Actors = () => {
   const { data, isFetching, error } = useGetActorDetailsQuery(id);
   const { data: movies } = useGetMoviesByActorIdQuery({ id, page });
   console.log("actors", data);
+
+  
 
   const currentTheme = useSelector((state) => state.themeSlice);
 
@@ -58,7 +61,9 @@ const Actors = () => {
             {data.birthday}
           </span>
           {/* Bio */}
-          <p className="lg:text-lg text-base font-medium lg:p-0 p-6 ">{data.biography}</p>
+          <p className="lg:text-lg text-base font-medium lg:p-0 p-6 ">
+            {data.biography}
+          </p>
 
           {/* Links */}
           {data.homepage && (

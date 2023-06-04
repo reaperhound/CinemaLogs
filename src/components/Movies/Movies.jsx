@@ -29,7 +29,7 @@ const Movies = () => {
     console.log();
     return (
       <div className="bg-black w-2/3 h-2/4">
-        <h1 className="text-3xl">No movies match that name</h1>
+        <h1 className="text-3xl text-white">No movies match that name</h1>
       </div>
     );
   }
