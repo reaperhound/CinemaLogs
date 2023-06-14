@@ -49,7 +49,7 @@ const Actors = () => {
         />
 
         {/* Actor Image */}
-        <div className="lg:w-[20vw] w-[70vw] lg:mt-[15vh] lg:ml-3 mx-auto mt-3 absolute">
+        <div className="lg:w-[20vw] w-[70vw] lg:mt-[15vh] lg:ml-3 mx-auto mt-3 top-[10vh] left-[15vw] absolute">
           <img
             className="rounded-md shadow-md"
             src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
@@ -58,7 +58,7 @@ const Actors = () => {
         </div>
 
         {/* Info */}
-        <div className="lg:max-w-[60%] lg:ml-[30vw] lg:mt-[15vh] mt-3 flex flex-col justify-center items-center absolute">
+        <div className="lg:max-w-[60%] lg:ml-[30vw] lg:mt-[15vh] mt-[-180px] flex flex-col justify-center items-center  lg:absolute">
           {/* Name */}
           <h1 className="text-4xl font-bold mb-5 ">{data.name}</h1>
           {/* Birthday */}
