@@ -15,7 +15,7 @@ function App() {
   // console.log(import.meta.env.VITE_TMDB_KEY);
 
   return (
-    <div className="flex flex-col h-screen sm:ml-[240px]">
+    <div className="flex flex-col h-screen sm:ml-[70px]">
       <CssBaseline />
       <Navbar />
       <main className="bg-base-100 flex-grow ">

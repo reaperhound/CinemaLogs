@@ -19,6 +19,8 @@ const Navbar = () => {
   
   const { isAuthenticated, user } = useSelector((state) => state.user)
 
+  const currentTheme = useSelector((state) => state.themeSlice);
+
   console.log('user',user);
 
   useEffect(() => {
@@ -52,8 +54,11 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`navbar bg-gradient-to-r from-primary to-primary-focus text-primary-content justify-between min-h-[8vh] border border-b-gray-500 `}
+        className={`navbar nav-mine z-50 bg-gradient-to-r
+        ${currentTheme === "halloween" ? "from-dark-grad-one to-dark-grad-two" : "from-light-grad-two to-light-grad-one"}
+        text-primary-content justify-between min-h-[8vh] `}
       >
+       
         {isMobile && (
           <button
             className="bg-transparent pl-1"

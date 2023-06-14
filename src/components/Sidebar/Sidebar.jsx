@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 import { useGetGenresQuery } from "../../services/TMDB";
 
-import { setTheme } from "../../features/currentTheme";
 import ReactLoading from "react-loading";
 import genreIcons from "../../assets/index";
 
@@ -26,29 +25,39 @@ const Sidebar = () => {
 
   console.log("ThemeSlice", currentTheme);
 
-
   return (
     <div
       className={`
-      text-base-content bg-gradient-to-r from-base-100 via-base-200 to-base-300 backdrop-blur-lg
-      border animate-fade-right pb-32  duration-300 z-50  border-gray-500 text-3xl w-[240px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0`}
+      text-base-content sidebar-mine bg-gradient-to-b
+      ${
+        currentTheme === "halloween"
+          ? "from-dark-grad-one to-dark-grad-two"
+          : "from-light-grad-two to-light-grad-one"
+      }
+      animate-fade-right pb-32  duration-300 z-50  text-3xl w-[70px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0 `}
     >
-      <Link to={'/'} className="py-6 mx-auto animate-spin animate-once">
+      <Link to={"/"} className="py-6 mx-auto animate-spin animate-once">
         <img src={genreIcons.logo} alt="logo" className="w-1/3 mx-auto" />
       </Link>
 
       {/* Categories */}
-      <h2 className="text-lg pl-7  ">Categories</h2>
-      <div>
+      {/* <h2 className="text-lg pl-7  ">Categories</h2> */}
+      <div className="relative">
         {categories.map(({ label, value }) => (
           <Link
             key={value}
             to={"/"}
             onClick={() => dispatch(selectGenreOrCategory(value))}
-            className="flex justify-start my-4 pl-3 py-3 hover:bg-primary-focus hover:text-primary-content hover:ease-in-out duration-900"
+            className={`flex justify-start my-4 pl-3 py-3 w-full overflow-hidden hover:overflow-visible
+            ${
+              currentTheme === "halloween"
+                ? "hover:bg-dark-grad-two hover:text-slate-100"
+                : " hover:bg-light-grad-two hover:text-gray-600"
+            }
+            `}
           >
-            <div className="avatar placeholder mx-2">
-              <div className="bg-inherit text-neutral-content rounded-full w-8 mr-2">
+            <div className=" placeholder mx-2">
+              <div className="bg-inherit text-neutral-content rounded-full w-7 ">
                 <img
                   src={genreIcons[label.toLowerCase()]}
                   alt={label}
@@ -56,7 +65,9 @@ const Sidebar = () => {
                 />
               </div>
             </div>
-            <p className="text-lg">{label}</p>
+            <p className="text-lg whitespace-nowrap">
+              &nbsp;&nbsp;&nbsp;{label}
+            </p>
           </Link>
         ))}
       </div>
@@ -64,7 +75,7 @@ const Sidebar = () => {
       <div className="divider"></div>
 
       {/* Genre */}
-      <h2 className="text-lg pl-7 ">Genre</h2>
+      {/* <h2 className="text-lg pl-7 ">Genre</h2> */}
       <div className="text-center">
         {isFetching ? (
           <ReactLoading type="bubbles" color="#f9d72f" />
@@ -74,9 +85,15 @@ const Sidebar = () => {
               key={id}
               to={"/"}
               onClick={() => dispatch(selectGenreOrCategory(id))}
-              className="flex justify-start my-4 pl-3 py-3 hover:bg-primary-focus hover:text-primary-content ease-in-out duration-100"
+              className={`flex justify-start my-4 pl-3 py-3 ease-in-out duration-100  overflow-hidden hover:overflow-visible
+              ${
+                currentTheme === "halloween"
+                  ? "hover:bg-dark-grad-two hover:text-slate-100"
+                  : " hover:bg-light-grad-two hover:text-gray-600"
+              }
+              `}
             >
-              <div className="avatar placeholder mx-2">
+              <div className="placeholder mx-2">
                 <div className="bg-inherit text-neutral-content rounded-full w-8 mr-2">
                   <img
                     src={genreIcons[name.toLowerCase()]}
@@ -85,7 +102,7 @@ const Sidebar = () => {
                   />
                 </div>
               </div>
-              <p className="text-lg">{name}</p>
+              <p className="text-lg">&nbsp;&nbsp;&nbsp;{name}</p>
             </Link>
           ))
         )}

@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "dark-grad-one" : " rgb(0, 0, 0)",
+        "dark-grad-two": "rgb(64, 64, 64)",
+        "light-grad-one": "#F5F7FA",
+        "light-grad-two": "#B8C6DB",
+      },
+    },
   },
   plugins: [require("daisyui"), require("tailwindcss-animated")],
   daisyui: {

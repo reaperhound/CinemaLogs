@@ -4,7 +4,6 @@ import { PacmanLoader } from "react-spinners";
 
 import { useGetMoviesQuery } from "../../services/TMDB";
 import { MovieList } from "../Index";
-import MoviesLoading from "./MoviesLoading";
 
 const Movies = () => {
   const [page, setpage] = useState(1)
@@ -12,6 +11,7 @@ const Movies = () => {
     (state) => state.currentGenreOrCategory
   );
   const { data, isFetching, error } = useGetMoviesQuery({ genreIdOrCategoryName, page, searchQuery });
+  const currentTheme = useSelector((state) => state.themeSlice);
 
   if (isFetching) {
     return (
@@ -35,7 +35,9 @@ const Movies = () => {
   }
 
   return (
-    <div className="bg-gradient-to-r from-base-100  to-base-300 backdrop-blur-lg backdrop-brightness-95 min-h-[210vh] pt-10 ">
+    <div className={`bg-gradient-to-r 
+    ${currentTheme === 'halloween' ? "from-dark-grad-one to-dark-grad-two" : "from-light-grad-two to-light-grad-one"}
+    movies-mine  min-h-[210vh] pt-10 `}>
       <MovieList movies={data} />
     </div>
   );

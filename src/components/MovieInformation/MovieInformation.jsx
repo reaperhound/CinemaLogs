@@ -120,7 +120,7 @@ const MovieInformation = () => {
         <div className="text-lg  mt-2 lg:mt-5">
           <span>
             Directing: &nbsp;
-            {directors.map((member) => member.name)}
+            {directors.map((member) => member?.name)}
           </span>
           <br />
           <span>
