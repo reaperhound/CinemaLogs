@@ -49,7 +49,7 @@ const Actors = () => {
         />
 
         {/* Actor Image */}
-        <div className="lg:w-[20vw] w-[70vw] lg:mt-[15vh] lg:ml-3 mx-auto mt-3 top-[10vh] left-[15vw] absolute">
+        <div className="lg:w-[20vw] w-[70vw] lg:mt-[15vh] lg:ml-3 mx-auto mt-3 top-[10vh] left-[1vw] absolute">
           <img
             className="rounded-md shadow-md"
             src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
@@ -58,7 +58,7 @@ const Actors = () => {
         </div>
 
         {/* Info */}
-        <div className="lg:max-w-[60%] lg:ml-[30vw] lg:mt-[15vh] mt-[-180px] flex flex-col justify-center items-center  lg:absolute">
+        <div className="lg:max-w-[60%] lg:ml-[30vw] lg:mt-[15vh] mt-3 flex flex-col justify-center items-center absolute">
           {/* Name */}
           <h1 className="text-4xl font-bold mb-5 ">{data.name}</h1>
           {/* Birthday */}
@@ -72,7 +72,7 @@ const Actors = () => {
 
           {/* Links */}
           {data.homepage && (
-            <div className="lg:mt-[68vh] lg:mr-[95vw] lg:absolute my-10 ">
+            <div className="lg:mt-[98vh] lg:mr-[95vw] lg:absolute my-10 ">
               <Link target="blank" to={data.homepage}>
                 <button className="btn bg-accent-focus text-accent-content w-[150px] hover:bg-primary hover:text-primary-content">
                   Website &nbsp;
@@ -84,7 +84,7 @@ const Actors = () => {
         </div>
       </div>
       {/* Movies */}
-      <div className="lg:mt-10">
+      <div className="lg:mt-20">
         <h1 className="text-3xl font-bold bg-primary lg:w-[6vw] w-[32vw] pl-1 lg:ml-[60px] ml-7 lg:mb-10 mb-5">
           Movies
         </h1>

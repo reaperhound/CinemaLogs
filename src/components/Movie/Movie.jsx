@@ -40,7 +40,7 @@ const Movie = ({ movie, i }) => {
         }
 
         {/* Title */}
-        <div className="absolute w-[200px] z-40 lg:bottom-4 lg:right-[82px] lg:hidden lg:group-hover:block">
+        <div className="absolute w-[200px] z-40 lg:bottom-4 lg:right-[82px] lg:hover:flex lg:hover:flex-col lg:hidden lg:group-hover:block">
           <h1 className="text-center font-semibold hover:cursor-pointer">
             {movie.title.substring(0, 18)}
           </h1>
