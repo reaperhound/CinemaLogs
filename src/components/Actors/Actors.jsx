@@ -18,8 +18,6 @@ const Actors = () => {
   const { data: movies } = useGetMoviesByActorIdQuery({ id, page });
   console.log("actors", data);
 
-  
-
   const currentTheme = useSelector((state) => state.themeSlice);
 
   if (isFetching) {
@@ -37,14 +35,21 @@ const Actors = () => {
   }
   return (
     <div
-      className={`
-      ${currentTheme === "halloween" ? "text-white" : "text-black"}
+      className={`bg-gradient-to-b
+      ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two" : "text-black from-light-grad-one to-light-grad-two"}
        lg:p-10 sm:p-3
     `}
     >
-      <div className="lg:flex">
+      <div className="lg:flex relative">
+        {/* backdrop */}
+        <img
+          className="w-[100vw] h-[90vh] blur-[200px]"
+          src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
+          alt={data.name}
+        />
+
         {/* Actor Image */}
-        <div className="lg:w-[20vw] w-[70vw] mx-auto mt-3">
+        <div className="lg:w-[20vw] w-[70vw] lg:mt-[15vh] lg:ml-3 mx-auto mt-3 absolute">
           <img
             className="rounded-md shadow-md"
             src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
@@ -53,7 +58,7 @@ const Actors = () => {
         </div>
 
         {/* Info */}
-        <div className="lg:max-w-[50%] lg:ml-10 mt-3 flex flex-col justify-center items-center">
+        <div className="lg:max-w-[60%] lg:ml-[30vw] lg:mt-[15vh] mt-3 flex flex-col justify-center items-center absolute">
           {/* Name */}
           <h1 className="text-4xl font-bold mb-5 ">{data.name}</h1>
           {/* Birthday */}
@@ -67,9 +72,9 @@ const Actors = () => {
 
           {/* Links */}
           {data.homepage && (
-            <div className="lg:mt-10 my-10">
+            <div className="lg:mt-[68vh] lg:mr-[95vw] lg:absolute my-10 ">
               <Link target="blank" to={data.homepage}>
-                <button className="btn bg-accent-focus text-accent-content hover:bg-primary hover:text-primary-content">
+                <button className="btn bg-accent-focus text-accent-content w-[150px] hover:bg-primary hover:text-primary-content">
                   Website &nbsp;
                   <PublicIcon />
                 </button>

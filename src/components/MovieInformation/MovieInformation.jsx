@@ -195,7 +195,7 @@ const MovieInformation = () => {
       </div>
 
       <div className="pl-3 mt-10">
-        <h1 className="text-2xl font-bold bg-primary lg:ml-[4rem] mb-7 lg:w-[13%] w-[60%]">
+        <h1 className="text-2xl font-bold bg-primary lg:ml-[10rem] mb-7 lg:w-[13%] w-[60%]">
           Recommendation
         </h1>
         {reccomendations ? (
