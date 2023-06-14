@@ -51,7 +51,7 @@ const ThemeSelector = () => {
             <a>{themeValues[1]}</a>
           </button>
         </li>
-        <li className="bg-white text-blue-500 hover:bg-blue-500 hover:text-white">
+        {/* <li className="bg-white text-blue-500 hover:bg-blue-500 hover:text-white">
           <button
             data-set-theme={themeValues[2].toLowerCase()}
             data-active-class="ACTIVECLASS"
@@ -60,7 +60,7 @@ const ThemeSelector = () => {
             <AcUnitIcon fontSize="large" />
             <a>{themeValues[2]}</a>
           </button>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
