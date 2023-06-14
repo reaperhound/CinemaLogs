@@ -72,21 +72,21 @@ const MovieInformation = () => {
   console.log("Direct", directors);
   return (
     <div
-      className={`
-    ${currentTheme === "halloween" ? "text-white" : "text-black"}
+      className={`bg-gradient-to-r
+    ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two " : "text-black from-light-grad-two to-light-grad-one"}
     `}
     >
       {/* backdrop */}
       <div className="w-full h-[70vh] overflow-hidden sm:block hidden">
         <img
-          className="w-full opacity-90 brightness-[30%]"
+          className="w-full opacity-90 brightness-[50%] shadow-inner"
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           alt="Poster"
         />
       </div>
 
       {/* Poster */}
-      <div className="lg:absolute lg:top-[45vh] lg:left-[20vw] ml-14 mt-5 mb-10 ">
+      <div className="lg:absolute lg:top-[50vh] lg:left-[10vw] ml-14 mt-5 mb-10">
         <img
           className="h-[50vh] shadow-2xl "
           src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
@@ -96,7 +96,7 @@ const MovieInformation = () => {
 
       {/* Info */}
       <div
-        className={`sm:absolute pl-3 sm:top-[45vh] sm:h-[35vh] sm:left-[40vw] lg:text-white lg:mt-3`}
+        className={`sm:absolute pl-3 sm:top-[51vh] sm:h-[35vh] sm:left-[30vw] lg:text-white lg:mt-3 `}
       >
         {/* release_date */}
         <h1 className={`text-2xl mt-1 font-medium`}>
@@ -131,15 +131,15 @@ const MovieInformation = () => {
       </div>
 
       {/* Overview */}
-      <div className="sm:ml-[560px] sm:mt-10 mt-10 pl-3  ">
+      <div className="sm:ml-[510px] sm:mt-5 mt-10 pl-3  ">
         <h2 className="text-2xl font-bold bg-primary lg:w-[6vw] w-[32vw] ">
           Overview
         </h2>
-        <p className="sm:w-[20vw] mt-5">{data.overview}</p>
+        <p className="sm:w-[24vw] mt-5">{data.overview}</p>
       </div>
 
       {/* //Add 2 fav, watchlist etc.. */}
-      <div className="flex gap-4 mt-10 flex-wrap pl-3">
+      <div className="flex gap-4 mt-[10vh] flex-wrap pl-[9.4vw]">
         <button
           className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToFavorites}
@@ -157,7 +157,7 @@ const MovieInformation = () => {
       </div>
 
       {/* External Links */}
-      <div className="flex gap-4 mt-10 flex-wrap pl-3">
+      <div className="flex gap-4 mt-10 flex-wrap pl-[9.4vw]">
         <Link target="blank" rel="noopener noreferrer" to={data?.homepage}>
           <button className="btn btn-secondary text-secondary-content">
             <PublicIcon />
@@ -183,7 +183,7 @@ const MovieInformation = () => {
       </div>
 
       {/* Cast */}
-      <div className="pl-3 mt-10">
+      <div className="pl-3 mt-10 lg:ml-[8vw]">
         <h1 className="bg-primary text-4xl font-semibold  w-40 sm:ml-[12px] mb-5">
           Top Cast
         </h1>
