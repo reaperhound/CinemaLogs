@@ -94,7 +94,6 @@ export default {
           "--border-btn": "1px",
         },
       },
-      "winter",
     ],
   },
 };

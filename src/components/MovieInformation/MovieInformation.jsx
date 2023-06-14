@@ -73,7 +73,7 @@ const MovieInformation = () => {
   return (
     <div
       className={`bg-gradient-to-r
-    ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two " : "text-black from-light-grad-two to-light-grad-one"}
+    ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two " : "text-white from-light-grad-two to-light-grad-one"}
     `}
     >
       {/* backdrop */}
@@ -84,6 +84,13 @@ const MovieInformation = () => {
           alt="Poster"
         />
       </div>
+
+      {/* blur image */}
+      <img
+          className="w-[95vw] opacity-90 blur-[200px] brightness-[50%] shadow-inner absolute  z-0"
+          src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
+          alt="Poster"
+        />
 
       {/* Poster */}
       <div className="lg:absolute lg:top-[50vh] lg:left-[10vw] ml-14 mt-5 mb-10">
@@ -96,7 +103,7 @@ const MovieInformation = () => {
 
       {/* Info */}
       <div
-        className={`sm:absolute pl-3 sm:top-[51vh] sm:h-[35vh] sm:left-[30vw] lg:text-white lg:mt-3 `}
+        className={`sm:absolute pl-3 sm:top-[51vh] sm:h-[35vh] sm:left-[30vw] lg:text-white lg:mt-3`}
       >
         {/* release_date */}
         <h1 className={`text-2xl mt-1 font-medium`}>
@@ -131,7 +138,7 @@ const MovieInformation = () => {
       </div>
 
       {/* Overview */}
-      <div className="sm:ml-[510px] sm:mt-5 mt-10 pl-3  ">
+      <div className="sm:ml-[510px] sm:mt-5 mt-10 pl-3 lg:z-50 lg:absolute ">
         <h2 className="text-2xl font-bold bg-primary lg:w-[6vw] w-[32vw] ">
           Overview
         </h2>
@@ -139,7 +146,7 @@ const MovieInformation = () => {
       </div>
 
       {/* //Add 2 fav, watchlist etc.. */}
-      <div className="flex gap-4 mt-[10vh] flex-wrap pl-[9.4vw]">
+      <div className="flex gap-4 mt-[10vh] flex-wrap pl-[9.4vw] lg:z-50 lg:absolute lg:mt-[30vh]">
         <button
           className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToFavorites}
@@ -157,7 +164,7 @@ const MovieInformation = () => {
       </div>
 
       {/* External Links */}
-      <div className="flex gap-4 mt-10 flex-wrap pl-[9.4vw]">
+      <div className="flex gap-4 mt-10 flex-wrap pl-[9.4vw] lg:z-50 lg:absolute lg:mt-[40vh]">
         <Link target="blank" rel="noopener noreferrer" to={data?.homepage}>
           <button className="btn btn-secondary text-secondary-content">
             <PublicIcon />
@@ -183,7 +190,7 @@ const MovieInformation = () => {
       </div>
 
       {/* Cast */}
-      <div className="pl-3 mt-10 lg:ml-[8vw]">
+      <div className="pl-3 mt-10 lg:ml-[8vw] lg:z-50 lg:absolute lg:mt-[55vh] lg:mr-[250px]">
         <h1 className="bg-primary text-4xl font-semibold  w-40 sm:ml-[12px] mb-5">
           Top Cast
         </h1>
@@ -194,7 +201,7 @@ const MovieInformation = () => {
         )}
       </div>
 
-      <div className="pl-3 mt-10">
+      <div className="pl-3 mt-10 lg:mt-[120vh]">
         <h1 className="text-2xl font-bold bg-primary lg:ml-[10rem] mb-7 lg:w-[13%] w-[60%]">
           Recommendation
         </h1>
