@@ -8,7 +8,7 @@ const Movie = ({ movie }) => {
       <Link to={`/movies/${movie.id}`}>
       <div class="card">
         {/* Poster */}
-        <div class="img">
+        <div className="img">
           <img
             loading="lazy"
             alt={movie.title}

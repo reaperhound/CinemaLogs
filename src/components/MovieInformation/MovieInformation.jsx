@@ -77,8 +77,9 @@ const MovieInformation = () => {
     `}
     >
       {/* backdrop */}
-      <div className="w-full h-[70vh] overflow-hidden sm:block hidden">
+      <div className="w-full h-[70vh] overflow-hidden sm:block">
         <img
+          loading="lazy"
           className="w-full opacity-90 brightness-[50%] shadow-inner"
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           alt="Poster"
@@ -87,15 +88,17 @@ const MovieInformation = () => {
 
       {/* blur image */}
       <img
-          className="w-[95vw] opacity-90 blur-[200px] brightness-[50%] shadow-inner absolute  z-0"
+          loading="lazy"
+          className="lg:w-[95vw] lg:h-full lg:mt-0 w-[120vw] blur-[190px] h-[100vh] mt-[-43vh] sm:blur[20px] opacity-90  brightness-[50%] shadow-inner relative  z-0"
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           alt="Poster"
         />
 
       {/* Poster */}
-      <div className="lg:absolute lg:top-[50vh] lg:left-[10vw] ml-14 mt-5 mb-10">
+      <div className="lg:mt-[-140vh] relative lg:ml-14 ml-5 mt-[-110vh] mb-10">
         <img
-          className="h-[50vh] shadow-2xl "
+          loading="lazy"
+          className="lg:h-[50vh] h-[30vh] shadow-2xl "
           src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
           alt=""
         />
@@ -103,7 +106,7 @@ const MovieInformation = () => {
 
       {/* Info */}
       <div
-        className={`sm:absolute pl-3 sm:top-[51vh] sm:h-[35vh] sm:left-[30vw] lg:text-white lg:mt-3`}
+        className={`lg:ml-14 ml-5 z-20 relative text-white lg:mt-3`}
       >
         {/* release_date */}
         <h1 className={`text-2xl mt-1 font-medium`}>
@@ -138,15 +141,15 @@ const MovieInformation = () => {
       </div>
 
       {/* Overview */}
-      <div className="sm:ml-[510px] sm:mt-5 mt-10 pl-3 lg:z-50 lg:absolute ">
+      <div className="lg:ml-14 mt-10 ml-5 mr-6  relative ">
         <h2 className="text-2xl font-bold bg-primary lg:w-[6vw] w-[32vw] ">
           Overview
         </h2>
-        <p className="sm:w-[24vw] mt-5">{data.overview}</p>
+        <p className="sm:w-[27.5vw] mt-5">{data.overview}</p>
       </div>
 
       {/* //Add 2 fav, watchlist etc.. */}
-      <div className="flex gap-4 mt-[10vh] flex-wrap pl-[9.4vw] lg:z-50 lg:absolute lg:mt-[30vh]">
+      <div className="flex gap-4  flex-wrap lg:mt-[-71.5vh] mt-5 lg:ml-[25vw] ml-5 lg:mb-0 mb-5 relative z-10">
         <button
           className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToFavorites}
@@ -164,7 +167,7 @@ const MovieInformation = () => {
       </div>
 
       {/* External Links */}
-      <div className="flex gap-4 mt-10 flex-wrap pl-[9.4vw] lg:z-50 lg:absolute lg:mt-[40vh]">
+      <div className="lg:mt-[-15vh] mt-5 lg:ml-[25vw] ml-5 flex gap-4 flex-wrap relative ">
         <Link target="blank" rel="noopener noreferrer" to={data?.homepage}>
           <button className="btn btn-secondary text-secondary-content">
             <PublicIcon />
@@ -190,8 +193,8 @@ const MovieInformation = () => {
       </div>
 
       {/* Cast */}
-      <div className="pl-3 mt-10 lg:ml-[8vw] lg:z-50 lg:absolute lg:mt-[55vh] lg:mr-[250px]">
-        <h1 className="bg-primary text-4xl font-semibold  w-40 sm:ml-[12px] mb-5">
+      <div className="relative z-50 mt-3">
+        <h1 className="bg-primary text-4xl font-semibold  w-40 lg:mt-0 mt-5  lg:ml-[65vw] ml-5 mb-5">
           Top Cast
         </h1>
         {isMobile ? (
@@ -201,8 +204,8 @@ const MovieInformation = () => {
         )}
       </div>
 
-      <div className="pl-3 mt-10 lg:mt-[120vh]">
-        <h1 className="text-2xl font-bold bg-primary lg:ml-[10rem] mb-7 lg:w-[13%] w-[60%]">
+      <div className="pl-3 mt-10 lg:mt-[30vh] relative">
+        <h1 className="text-2xl font-bold bg-primary lg:ml-[3rem] ml-4 mb-7 lg:w-[13%] w-[60%]">
           Recommendation
         </h1>
         {reccomendations ? (
