@@ -1,61 +1,43 @@
-import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import "./Movie.css";
+import { Link } from "react-router-dom";
 
-const Movie = ({ movie, i }) => {
-  console.log(movie);
-  const movieRef = useRef(null);
-  useEffect(() => {
-    const delay = (i + 1) * 100;
-    const animationTimeout = setTimeout(() => {
-      movieRef.current.style.opacity = 1;
-    }, delay);
-
-    return () => {
-      clearTimeout(animationTimeout);
-    };
-  }, [i]);
-
+const Movie = ({ movie }) => {
   return (
-    <div
-      ref={movieRef}
-      className="text-base-content relative my-7"
-      style={{ opacity: 0, transition: "opacity 0.25s ease-in-out" }}
-    >
-      <Link
-        to={`/movies/${movie.id}`}
-        className="hover:cursor-pointer relative group w-[200px]"
-      >
-        {
+    <div className="relative my-7 text-white group">
+      <Link to={`/movies/${movie.id}`}>
+      <div class="card">
+        {/* Poster */}
+        <div class="img">
           <img
             loading="lazy"
             alt={movie.title}
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                : `https://www.fillmurray.comm/200/200`
+                : `https://www.fillmurray.com/200/200`
             }
-            className="rounded-lg shadow-lg mx-auto sm:h-[300px] h-[200px] lg:hover:animate-rotate-y lg:animate-duration-300  lg:hover:scale-110 lg:hover:blur-[5px] lg:hover:brightness-[90%] ease-in-out duration-100 "
           />
-        }
+        </div>
 
-        {/* Title */}
-        <div className="absolute w-[200px] z-40 lg:bottom-4 lg:right-[82px] lg:hover:flex lg:hover:flex-col lg:hidden lg:group-hover:block">
-          <h1 className="text-center font-semibold hover:cursor-pointer">
-            {movie.title.substring(0, 18)}
-          </h1>
-
-          <h1 className="text-center mb-2 font-medium ">
+        {/* Info */}
+        <div class="textBox">
+          <p class="text head">
+          <h2 className="text-2xl font-bold text-center">{movie.title}</h2>
+          </p>
+          {/* <span>Cryptocurrency</span> */}
+          <p class="text price">
             {movie.vote_average.toFixed(1)} &nbsp;
-            <div className="rating rating-xs ">
+            <div className="rating rating-xs">
               <input
                 type="radio"
                 name="rating-5"
-                className="mask mask-star-2 "
+                className="mask mask-star-2"
               />
             </div>
-          </h1>
+          </p>
         </div>
+      </div>
       </Link>
     </div>
   );

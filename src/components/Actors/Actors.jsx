@@ -40,7 +40,7 @@ const Actors = () => {
        lg:p-10 sm:p-3
     `}
     >
-      <div className="lg:flex relative">
+      <div className="relative lg:flex">
         {/* backdrop */}
         <img
           className="w-[100vw] h-[90vh] blur-[200px]"
@@ -60,13 +60,13 @@ const Actors = () => {
         {/* Info */}
         <div className="lg:max-w-[60%] lg:ml-[30vw] lg:mt-[15vh] mt-3 flex flex-col justify-center items-center absolute">
           {/* Name */}
-          <h1 className="text-4xl font-bold mb-5 ">{data.name}</h1>
+          <h1 className="mb-5 text-4xl font-bold">{data.name}</h1>
           {/* Birthday */}
-          <span className="text-xl font-medium mb-5 block">
+          <span className="block mb-5 text-xl font-medium">
             {data.birthday}
           </span>
           {/* Bio */}
-          <p className="lg:text-lg text-base font-medium lg:p-0 p-6 ">
+          <p className="p-6 text-base font-medium lg:text-lg lg:p-0">
             {data.biography}
           </p>
 
