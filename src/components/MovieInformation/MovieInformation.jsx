@@ -72,7 +72,7 @@ const MovieInformation = () => {
   console.log("Direct", directors);
   return (
     <div
-      className={`bg-gradient-to-r lg:pl-[5vw]
+      className={`bg-gradient-to-r lg:pl-[5vw] relative
     ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two " : "text-white from-light-grad-two to-light-grad-one"}
     `}
     >
@@ -99,7 +99,7 @@ const MovieInformation = () => {
         <img
           loading="lazy"
           className="lg:h-[50vh] h-[30vh] shadow-2xl "
-          src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
           alt=""
         />
       </div>
@@ -141,7 +141,7 @@ const MovieInformation = () => {
       </div>
 
       {/* Overview */}
-      <div className="lg:ml-14 mt-10 ml-5 mr-6  relative ">
+      <div className="lg:ml-14 lg:top-[124.5vh] lg:mr-0 mt-10 ml-5 mr-6  absolute ">
         <h2 className="text-2xl font-bold bg-primary lg:w-[6vw] w-[32vw] ">
           Overview
         </h2>
@@ -149,7 +149,7 @@ const MovieInformation = () => {
       </div>
 
       {/* //Add 2 fav, watchlist etc.. */}
-      <div className="flex gap-4  flex-wrap lg:mt-[-71.5vh] mt-5 lg:ml-[25vw] ml-5 lg:mb-0 mb-5 relative z-10">
+      <div className="flex gap-4  flex-wrap lg:top-[-51.5vh] mt-5 lg:left-[49.5vw] ml-5 lg:mb-0 mb-5 relative z-[70]">
         <button
           className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToFavorites}
@@ -158,7 +158,7 @@ const MovieInformation = () => {
           {isMovieFavorite ? <FavoriteBorderOutlined /> : <Favorite />}
         </button>
         <button
-          className="btn bg-primary-focus text-primary-content hover:text-white"
+          className="lg:ml-[2.1vw] btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToWatchList}
         >
           Watchlist&nbsp;
@@ -167,7 +167,7 @@ const MovieInformation = () => {
       </div>
 
       {/* External Links */}
-      <div className="lg:mt-[-15vh] mt-5 lg:ml-[25vw] ml-5 flex gap-4 flex-wrap relative ">
+      <div className="lg:top-[-52vh] mt-5 lg:left-[49.5vw] ml-5 flex gap-4 flex-wrap relative z-[70]">
         <Link target="blank" rel="noopener noreferrer" to={data?.homepage}>
           <button className="btn btn-secondary text-secondary-content">
             <PublicIcon />
@@ -193,8 +193,8 @@ const MovieInformation = () => {
       </div>
 
       {/* Cast */}
-      <div className="relative z-50 mt-3">
-        <h1 className="bg-primary text-4xl font-semibold  w-40 lg:mt-0 mt-5  lg:ml-[65vw] ml-5 mb-5">
+      <div className="relative z-50 mt-3 lg:top-[-48vh]">
+        <h1 className="bg-primary text-4xl font-semibold  w-40 lg:mt-0 mt-5  lg:ml-[50.8vw] ml-5 mb-5">
           Top Cast
         </h1>
         {isMobile ? (
@@ -204,7 +204,7 @@ const MovieInformation = () => {
         )}
       </div>
 
-      <div className="pl-3 mt-10 lg:mt-[30vh] relative">
+      <div className="pl-3 mt-10 lg:top-[-20vh] relative">
         <h1 className="text-2xl font-bold bg-primary lg:ml-[3rem] ml-4 mb-7 lg:w-[13%] w-[60%]">
           Recommendation
         </h1>
@@ -215,7 +215,7 @@ const MovieInformation = () => {
         )}
       </div>
 
-      <Modal
+      {/* <Modal
         closeAfterTransition
         className="flex items-center justify-center"
         open={open}
@@ -231,7 +231,7 @@ const MovieInformation = () => {
             frameborder="0"
           />
         )}
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
