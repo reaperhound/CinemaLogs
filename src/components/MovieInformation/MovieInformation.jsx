@@ -72,7 +72,7 @@ const MovieInformation = () => {
   console.log("Direct", directors);
   return (
     <div
-      className={`bg-gradient-to-r
+      className={`bg-gradient-to-r lg:pl-[5vw]
     ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two " : "text-white from-light-grad-two to-light-grad-one"}
     `}
     >

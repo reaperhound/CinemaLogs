@@ -35,9 +35,9 @@ const Actors = () => {
   }
   return (
     <div
-      className={`bg-gradient-to-b
+      className={`bg-gradient-to-b lg:pl-[5vw]
       ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two" : "text-black from-light-grad-one to-light-grad-two"}
-       lg:p-10 sm:p-3
+       lg:p-10  lg:h-[320vh]
     `}
     >
       <div className="relative lg:flex">
@@ -50,7 +50,7 @@ const Actors = () => {
         />
 
         {/* Actor Image */}
-        <div className="lg:w-[20vw] w-[70vw] lg:mt-[15vh] lg:ml-3 mx-auto mt-3 top-[10vh] left-[1vw] absolute">
+        <div className="lg:w-[150%] w-[70vw] lg:ml-[-25vw] lg:mt-[15vh] mt-[-80vh] mx-auto relative">
           <img
             loading="lazy"
             className="rounded-md shadow-md"
@@ -60,7 +60,7 @@ const Actors = () => {
         </div>
 
         {/* Info */}
-        <div className="lg:max-w-[60%] lg:ml-[30vw] lg:mt-[15vh] mt-3 flex flex-col justify-center items-center absolute">
+        <div className="lg:max-w-[60%] lg:ml-[20vw] lg:mt-[-27vh] lg:mr-[5vw] mt-[-5vh] flex flex-col justify-center items-center relative">
           {/* Name */}
           <h1 className="mb-4 mt-[9vh] text-4xl font-bold">{data.name}</h1>
           {/* Birthday */}
@@ -74,7 +74,7 @@ const Actors = () => {
 
           {/* Links */}
           {data.homepage && (
-            <div className="lg:mt-[98vh] lg:mr-[95vw] lg:absolute my-10 ">
+            <div className="lg:mt-[125vh] lg:mr-[95vw] lg:absolute my-10 ml-[-20vh] ">
               <Link target="blank" to={data.homepage}>
                 <button className="btn bg-accent-focus text-accent-content w-[150px] hover:bg-primary hover:text-primary-content">
                   Website &nbsp;

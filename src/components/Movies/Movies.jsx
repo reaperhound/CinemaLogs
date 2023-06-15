@@ -37,7 +37,7 @@ const Movies = () => {
   return (
     <div className={`bg-gradient-to-r 
     ${currentTheme === 'halloween' ? "from-dark-grad-one to-dark-grad-two" : "from-light-grad-two to-light-grad-one"}
-    movies-mine  min-h-[252vh] pt-10 `}>
+    movies-mine  min-h-[252vh] pt-10 lg:pl-[5vw]`}>
       <MovieList movies={data} />
     </div>
   );

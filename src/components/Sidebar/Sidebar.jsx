@@ -34,7 +34,7 @@ const Sidebar = () => {
           ? "from-dark-grad-one to-dark-grad-two"
           : "from-light-grad-two to-light-grad-one"
       }
-      animate-fade-right pb-32  duration-300 z-50  text-3xl w-[70px] flex flex-col gap-5 justify-start min-h-[100vh] absolute left-0 `}
+      animate-fade-right duration-300 z-50  text-3xl w-[70px] flex flex-col gap-5 justify-start min-h-[200vh] absolute `}
     >
       <Link to={"/"} className="py-6 mx-auto animate-spin animate-once">
         <img src={genreIcons.logo} alt="logo" className="w-1/3 mx-auto" />
@@ -93,7 +93,7 @@ const Sidebar = () => {
               }
               `}
             >
-              <div className="placeholder mx-2">
+              <div className="placeholder mx-2 ">
                 <div className="bg-inherit text-neutral-content rounded-full w-8 mr-2">
                   <img
                     src={genreIcons[name.toLowerCase()]}

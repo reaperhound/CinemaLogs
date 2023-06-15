@@ -10,12 +10,16 @@ import {
   Profile,
 } from "./components/Index";
 import { CssBaseline } from "@mui/material";
+import { useSelector } from "react-redux";
 
 function App() {
   // console.log(import.meta.env.VITE_TMDB_KEY);
+  const currentTheme = useSelector(state => state.themeSlice)
 
   return (
-    <div className="flex flex-col sm:ml-[70px] h-[200vh]">
+    <div className={`
+    ${currentTheme === "halloween" ? "bg-light-grad-two" : "bg-dark-grad-two"}
+    flex flex-col h-[200vh] w-full`}>
       {/* <CssBaseline /> */}
       <Navbar />
       <main className="bg-base-100 flex-grow min-h-[200vh] ">
