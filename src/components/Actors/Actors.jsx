@@ -74,7 +74,7 @@ const Actors = () => {
 
           {/* Links */}
           {data.homepage && (
-            <div className="lg:mt-[125vh] lg:mr-[95vw] lg:absolute my-10 ml-[-20vh] ">
+            <div className="lg:mt-[125vh] lg:mr-[100.2vw] lg:absolute my-10 ml-[-20vh] ">
               <Link target="blank" to={data.homepage}>
                 <button className="btn bg-accent-focus text-accent-content w-[150px] hover:bg-primary hover:text-primary-content">
                   Website &nbsp;
@@ -86,7 +86,7 @@ const Actors = () => {
         </div>
       </div>
       {/* Movies */}
-      <div className="lg:mt-20">
+      <div className="lg:mt-20 lg:ml-3">
         <h1 className="text-3xl font-bold bg-primary lg:w-[6vw] w-[32vw] pl-1 lg:ml-[60px] ml-7 lg:mb-10 mb-5">
           Movies
         </h1>

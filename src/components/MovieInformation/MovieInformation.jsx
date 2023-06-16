@@ -141,7 +141,7 @@ const MovieInformation = () => {
       </div>
 
       {/* Overview */}
-      <div className="lg:ml-14 lg:top-[124.5vh] lg:mr-0 mt-10 ml-5 mr-6  absolute ">
+      <div className="lg:ml-14 lg:top-[126vh] lg:mr-0 mt-10 ml-5 mr-6  absolute ">
         <h2 className="text-2xl font-bold bg-primary lg:w-[6vw] w-[32vw] ">
           Overview
         </h2>
