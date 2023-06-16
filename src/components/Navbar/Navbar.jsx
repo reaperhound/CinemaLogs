@@ -9,6 +9,7 @@ import UserDropDown from "./UserDropDown";
 import ThemeSelector from "./ThemeSelector";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, userSelector } from "../../features/auth";
+import SidebarMobile from "../Sidebar/SidebarMobile";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ const Navbar = () => {
             className="bg-transparent pl-1"
             onClick={() => setSideBarOpen(!sideBarOpen)}
           >
-            <DehazeIcon />
+            <DehazeIcon className={`${currentTheme === 'halloween' ? 'text-white' : 'text-black'}`} />
           </button>
         )}
 
@@ -88,7 +89,7 @@ const Navbar = () => {
               className="bg-transparent pl-1"
               onClick={() => setSideBarOpen(!sideBarOpen)}
             >
-              <ClearIcon />
+              <ClearIcon className={`${currentTheme === 'halloween' ? 'text-white' : 'text-black'}`} />
             </button>
           ) : isAuthenticated ? (
             <UserDropDown />
@@ -105,7 +106,14 @@ const Navbar = () => {
           </button>
         )}
       </div>
-      {sideBarOpen && <Sidebar />}
+      {
+        !isMobile && <Sidebar /> 
+      }
+      {
+        isMobile && (
+          sideBarOpen && <SidebarMobile />
+        )
+      }
     </>
   );
 };
