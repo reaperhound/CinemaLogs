@@ -11,6 +11,7 @@ import {
 } from "./components/Index";
 import { CssBaseline } from "@mui/material";
 import { useSelector } from "react-redux";
+import MovieInformation2 from "./components/MovieInformation/MovieInformation2";
 
 function App() {
   // console.log(import.meta.env.VITE_TMDB_KEY);
