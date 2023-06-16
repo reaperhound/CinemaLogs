@@ -38,7 +38,7 @@ const Movies = () => {
   return (
     <div className={`bg-gradient-to-r 
     ${currentTheme === 'halloween' ? "from-dark-grad-one to-dark-grad-two" : "from-light-grad-two to-light-grad-one"}
-    movies-mine  lg:min-h-[252vh] pt-10 lg:pl-[5vw]`}>
+    movies-mine lg:pb-[5vh] pt-10 lg:pl-[5vw]`}>
       <MovieList movies={data} />
       <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
     </div>

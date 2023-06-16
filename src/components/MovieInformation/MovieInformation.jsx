@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import {
+  useGetListQuery,
   useGetMovieQuery,
   useGetReccomendationsQuery,
 } from "../../services/TMDB";
@@ -21,13 +22,22 @@ import {
   Remove,
 } from "@mui/icons-material";
 import Modal from "./Modal";
+import axios from "axios";
 
 const MovieInformation = () => {
+  
   const { id } = useParams();
+  
+  const {user} = useSelector((state) => state.user) 
+
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const { data: favoriteMovies} = useGetListQuery({listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
+  const { data: watchListMovies} = useGetListQuery({listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1})
   const { data: reccomendations, isFetching: isReccFetching } =
     useGetReccomendationsQuery({ list: "/recommendations", movie_id: id });
+    
   console.log("recc", reccomendations);
+
   const currentTheme = useSelector((state) => state.themeSlice);
 
   const [open, setOpen] = useState(false);
@@ -39,9 +49,25 @@ const MovieInformation = () => {
   const [isMovieFavorite, setisMovieFavorite] = useState(false);
   const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
 
-  const addToFavorites = () => {};
+  const addToFavorites = async () => {
+    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${import.meta.env.VITE_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
+      media_type: 'movie',
+      media_id : id,
+      favorite: !isMovieFavorite
+    });
 
-  const addToWatchList = () => {};
+    setisMovieFavorite(prev => !prev)
+  };
+
+  const addToWatchList = async () => {
+    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${import.meta.env.VITE_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
+      media_type: 'movie',
+      media_id : id,
+      watchlist: !isMovieWatchlisted
+    });
+
+    setIsMovieWatchlisted(prev => !prev)
+  };
 
   useEffect(() => {
     function MobileScr() {
@@ -50,6 +76,14 @@ const MovieInformation = () => {
     console.log(MobileScr());
     setIsMobile(MobileScr());
   }, []);
+
+  useEffect(() => {
+    setisMovieFavorite(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id))
+  },[favoriteMovies, data])
+
+  useEffect(() => {
+    setIsMovieWatchlisted(!!watchListMovies?.results?.find((movie) => movie?.id === data?.id))
+  },[watchListMovies, data])
 
   if (isFetching) {
     return <MoviesLoading />;
@@ -166,7 +200,7 @@ const MovieInformation = () => {
           onClick={addToWatchList}
         >
           Watchlist&nbsp;
-          {isMovieWatchlisted ? <Remove /> : <PlusOne />}
+          {isMovieWatchlisted ? <>-1</> : <PlusOne />}
         </button>
       </div>
 
