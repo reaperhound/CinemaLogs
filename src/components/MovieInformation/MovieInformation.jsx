@@ -72,12 +72,12 @@ const MovieInformation = () => {
   console.log("Direct", directors);
   return (
     <div
-      className={`bg-gradient-to-r lg:pl-[5vw] relative
+      className={`bg-gradient-to-r lg:pl-[5vw] relative 
     ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two " : "text-white from-light-grad-two to-light-grad-one"}
     `}
     >
       {/* backdrop */}
-      <div className="w-full h-[70vh] overflow-hidden sm:block">
+      <div className="w-full h-[70vh] overflow-hidden sm:block ">
         <img
           loading="lazy"
           className="w-full opacity-90 brightness-[50%] shadow-inner"
@@ -89,7 +89,7 @@ const MovieInformation = () => {
       {/* blur image */}
       <img
           loading="lazy"
-          className="lg:w-[95vw] lg:h-full lg:mt-0 w-[120vw] blur-[190px] h-[100vh] mt-[-43vh] sm:blur[20px] opacity-90  brightness-[50%] shadow-inner relative  z-0"
+          className="lg:w-[95vw] lg:h-full lg:mt-0 w-[120vw] blur-[190px] h-[100vh] mt-[-43vh] sm:blur[20px] opacity-90  brightness-[50%] shadow-inner relative overflow-hidden z-0"
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           alt="Poster"
         />
@@ -149,7 +149,7 @@ const MovieInformation = () => {
       </div>
 
       {/* //Add 2 fav, watchlist etc.. */}
-      <div className="flex gap-4  flex-wrap lg:top-[-51.5vh] mt-[55vh] lg:left-[49.5vw] ml-5 lg:mb-0 mb-5 relative z-[70]">
+      <div className="flex gap-4 flex-wrap lg:top-[-83.5vh] mt-[55vh] lg:left-[49.5vw] ml-5 lg:mb-0 mb-5 relative z-[70]">
         <button
           className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToFavorites}
@@ -167,7 +167,7 @@ const MovieInformation = () => {
       </div>
 
       {/* External Links */}
-      <div className="lg:top-[-52vh] mt-[1vh] lg:left-[49.5vw] ml-5 flex gap-4 flex-wrap relative z-[70]">
+      <div className="lg:top-[-79vh] mt-[1vh] lg:left-[49.5vw] ml-5 flex gap-4 flex-wrap relative z-[70]">
         <Link target="blank" rel="noopener noreferrer" to={data?.homepage}>
           <button className="btn btn-secondary text-secondary-content">
             <PublicIcon />
@@ -193,7 +193,7 @@ const MovieInformation = () => {
       </div>
 
       {/* Cast */}
-      <div className="relative z-50 mt-3 lg:top-[-48vh]">
+      <div className="relative z-50 mt-3 lg:top-[-59vh]">
         <h1 className="bg-primary text-4xl font-semibold  w-40 lg:mt-0 mt-5  lg:ml-[50.8vw] ml-5 mb-5">
           Top Cast
         </h1>
@@ -215,7 +215,7 @@ const MovieInformation = () => {
         )}
       </div>
 
-      {/* <Modal
+      <Modal
         closeAfterTransition
         className="flex items-center justify-center"
         open={open}
@@ -231,7 +231,7 @@ const MovieInformation = () => {
             frameborder="0"
           />
         )}
-      </Modal> */}
+      </Modal>
     </div>
   );
 };

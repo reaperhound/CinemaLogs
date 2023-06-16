@@ -20,7 +20,7 @@ const ThemeSelector = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className="dropdown">
+    <div className="dropdown lg:left-[6%] hover:animate-wiggle">
       <label
         tabIndex="0"
         className="m-1 border-none btn bg-inherit hover:bg-primary-focus"
@@ -37,7 +37,7 @@ const ThemeSelector = () => {
             data-active-class="ACTIVECLASS"
             onClick={() => dispatch(setTheme(themeValues[0].toLowerCase()))}
           >
-            <HiveIcon fontSize="large" />
+            <HiveIcon  fontSize="large" />
             <a>{themeValues[0]}</a>
           </button>
         </li>

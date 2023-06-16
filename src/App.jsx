@@ -19,10 +19,10 @@ function App() {
   return (
     <div className={`
     ${currentTheme === "halloween" ? "bg-light-grad-two" : "bg-dark-grad-two"}
-    flex flex-col  w-full`}>
+    flex flex-col`}>
       {/* <CssBaseline /> */}
       <Navbar />
-      <main className="bg-base-100 flex-grow ">
+      <main className="bg-base-100  ">
         {/* <div className="h-[80px]" /> */}
         <Routes>
           <Route exact path="/" element={<Movies />} />

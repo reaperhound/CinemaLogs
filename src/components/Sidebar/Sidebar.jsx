@@ -7,7 +7,6 @@ import { useGetGenresQuery } from "../../services/TMDB";
 
 import ReactLoading from "react-loading";
 import genreIcons from "../../assets/index";
-// import "./Sidebar.css";
 
 const Sidebar = () => {
   const { data, isFetching } = useGetGenresQuery();
@@ -27,47 +26,11 @@ const Sidebar = () => {
   console.log("ThemeSlice", currentTheme);
 
   return (
-    //   <div className="divider"></div>
-
-    //   {/* Genre */}
-    //   {/* <h2 className="text-lg pl-7 ">Genre</h2> */}
-    //   <div className="text-center">
-    //     {isFetching ? (
-    //       <ReactLoading type="bubbles" color="#f9d72f" />
-    //     ) : (
-    //       data.genres.map(({ name, id }) => (
-    //         <Link
-    //           key={id}
-    //           to={"/"}
-    //           onClick={() => dispatch(selectGenreOrCategory(id))}
-    //           className={`flex justify-start my-4 pl-3 py-3 ease-in-out duration-100  overflow-hidden hover:overflow-visible
-    //           ${
-    //             currentTheme === "halloween"
-    //               ? "hover:bg-dark-grad-two hover:text-slate-100"
-    //               : " hover:bg-light-grad-two hover:text-gray-600"
-    //           }
-    //           `}
-    //         >
-    //           <div className="placeholder mx-2 ">
-    //             <div className="bg-inherit text-neutral-content rounded-full w-8 mr-2">
-    //               <img
-    //                 src={genreIcons[name.toLowerCase()]}
-    //                 alt={name}
-    //                 className={`${currentTheme === "halloween" && "invert"}`}
-    //               />
-    //             </div>
-    //           </div>
-    //           <p className="text-lg">&nbsp;&nbsp;&nbsp;{name}</p>
-    //         </Link>
-    //       ))
-    //     )}
-    //   </div>
-    // </div>
     <>
       <div className="z-[80] max-w-[60px] absolute">
         {/* Logo */}
-        <Link to={"/"} className="py-6 mx-auto animate-spin animate-once">
-          <img src={genreIcons.logo} alt="logo" className="w-1/3 mx-auto" />{" "}
+        <Link to={"/"} className="py-6 mx-auto animate-spin animate-once ">
+          <img src={genreIcons.logo} alt="logo" className="w-2/3 mx-auto mt-6" />{" "}
         </Link>
 
         {/* Categories */}
@@ -76,21 +39,22 @@ const Sidebar = () => {
             {categories.map(({ label, value }) => (
               <Link
                 className={`duration-300 hover:ml-[1.4%] cursor-pointer py-6 lg:w-[120px]
-              ml-[-60%] group h-[30px] flex justify-center items-center 
-              ${
-                currentTheme === "halloween"
-                  ? "hover:bg-dark-grad-two hover:text-slate-100"
-                  : " hover:bg-light-grad-one hover:text-gray-600"
-              }
-              `}
+                  ml-[-60%] group h-[30px] flex justify-center items-center 
+                  ${
+                    currentTheme === "halloween"
+                      ? "hover:bg-dark-grad-two hover:text-slate-100"
+                      : " hover:bg-light-grad-one hover:text-gray-600"
+                  }
+                  `}
                 key={value}
                 to={"/"}
                 onClick={() => dispatch(selectGenreOrCategory(value))}
               >
+                {/* Label */}
                 <div className=" min-w-[60%] mr-2 pl-2 ">
                   <p className="text-sm whitespace-nowrap ">{label}</p>
                 </div>
-
+                {/* Image PNG */}
                 <div className="">
                   <img
                     src={genreIcons[label.toLowerCase()]}
@@ -125,10 +89,12 @@ const Sidebar = () => {
                   to={"/"}
                   onClick={() => dispatch(selectGenreOrCategory(value))}
                 >
+                  {/* Label */}
                   <div className=" min-w-[60%] mr-2 pl-2 ">
                     <p className="text-sm whitespace-nowrap ">{name}</p>
                   </div>
 
+                    {/* Image PNG */}
                   <div className="">
                     <img
                       src={genreIcons[name.toLowerCase()]}
