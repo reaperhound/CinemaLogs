@@ -4,9 +4,10 @@ import { PacmanLoader } from "react-spinners";
 
 import { useGetMoviesQuery } from "../../services/TMDB";
 import { MovieList } from "../Index";
+import Pagination from "../Pagination/Pagination";
 
 const Movies = () => {
-  const [page, setpage] = useState(1)
+  const [page, setPage] = useState(1)
   const { genreIdOrCategoryName, searchQuery } = useSelector(
     (state) => state.currentGenreOrCategory
   );
@@ -39,6 +40,7 @@ const Movies = () => {
     ${currentTheme === 'halloween' ? "from-dark-grad-one to-dark-grad-two" : "from-light-grad-two to-light-grad-one"}
     movies-mine  lg:min-h-[252vh] pt-10 lg:pl-[5vw]`}>
       <MovieList movies={data} />
+      <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
     </div>
   );
 };

@@ -8,11 +8,11 @@ import MoviesLoading from "../Movies/MoviesLoading";
 import { useSelector } from "react-redux";
 import PublicIcon from "@mui/icons-material/Public"; //website
 import { MovieList } from "../Index";
-import { Modal } from "@mui/material";
+import Pagination from "../Pagination/Pagination";
 
 const Actors = () => {
   const { id } = useParams();
-  const page = 1;
+  const [page, setPage] = useState(1)
   const history = useNavigate();
   const { data, isFetching, error } = useGetActorDetailsQuery(id);
   const { data: movies } = useGetMoviesByActorIdQuery({ id, page });
@@ -53,7 +53,7 @@ const Actors = () => {
         <div className="lg:ml-[vw] lg:mt-[15vh] mt-[-80vh] mx-auto relative lg:absolute">
           <img
             loading="lazy"
-            className="lg:max-w-[21vw] rounded-md shadow-md w-"
+            className="lg:max-w-[21vw] max-w-[50vw] lg:mx-0 mx-auto rounded-md shadow-md w-"
             src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
             alt={data.name}
           />
@@ -92,6 +92,7 @@ const Actors = () => {
         </h1>
         {movies && <MovieList movies={movies} />}
       </div>
+        <Pagination currentPage={page} setPage={setPage} totalPages={movies?.total_pages} />
     </div>
   );
 };
