@@ -162,7 +162,7 @@ const MovieInformation = () => {
           </span>
 
           {/* rating count */}
-          <span className=" ml-4 ">{data.vote_count} votes</span>
+          <span className=" ml-4 ">{data?.vote_count} votes</span>
         </div>
 
         <div className="text-lg  mt-2 lg:mt-5">

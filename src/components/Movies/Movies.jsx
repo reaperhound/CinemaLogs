@@ -5,6 +5,7 @@ import { PacmanLoader } from "react-spinners";
 import { useGetMoviesQuery } from "../../services/TMDB";
 import { MovieList } from "../Index";
 import Pagination from "../Pagination/Pagination";
+import FeaturedMovie from "../FeaturedMovie/FeaturedMovie";
 
 const Movies = () => {
   const [page, setPage] = useState(1)
@@ -39,7 +40,8 @@ const Movies = () => {
     <div className={`bg-gradient-to-r 
     ${currentTheme === 'halloween' ? "from-dark-grad-one to-dark-grad-two" : "from-light-grad-two to-light-grad-one"}
     movies-mine lg:pb-[5vh] pt-10 lg:pl-[5vw]`}>
-      <MovieList movies={data} />
+      <FeaturedMovie movie={data?.results[0]} />
+      <MovieList movies={data} excludeFirst />
       <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
     </div>
   );

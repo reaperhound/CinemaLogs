@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 import { useGetGenresQuery } from "../../services/TMDB";
 
 import ReactLoading from "react-loading";
@@ -8,13 +9,12 @@ import { Link } from "react-router-dom";
 
 const SidebarMobile = () => {
   const currentTheme = useSelector((state) => state.themeSlice);
-
   const { data, isFetching } = useGetGenresQuery();
   const { genreIdOrCategoryName } = useSelector(
     (state) => state.currentGenreOrCategory
   );
-  console.log(genreIdOrCategoryName);
   const dispatch = useDispatch();
+
   const categories = [
     { label: "Popular", value: "popular" },
     { label: "Top Rated", value: "top_rated" },
