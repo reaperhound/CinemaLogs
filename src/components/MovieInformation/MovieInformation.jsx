@@ -149,7 +149,7 @@ const MovieInformation = () => {
       </div>
 
       {/* //Add 2 fav, watchlist etc.. */}
-      <div className="flex gap-4  flex-wrap lg:top-[-51.5vh] mt-5 lg:left-[49.5vw] ml-5 lg:mb-0 mb-5 relative z-[70]">
+      <div className="flex gap-4  flex-wrap lg:top-[-51.5vh] mt-[55vh] lg:left-[49.5vw] ml-5 lg:mb-0 mb-5 relative z-[70]">
         <button
           className="btn bg-primary-focus text-primary-content hover:text-white"
           onClick={addToFavorites}
@@ -167,7 +167,7 @@ const MovieInformation = () => {
       </div>
 
       {/* External Links */}
-      <div className="lg:top-[-52vh] mt-5 lg:left-[49.5vw] ml-5 flex gap-4 flex-wrap relative z-[70]">
+      <div className="lg:top-[-52vh] mt-[1vh] lg:left-[49.5vw] ml-5 flex gap-4 flex-wrap relative z-[70]">
         <Link target="blank" rel="noopener noreferrer" to={data?.homepage}>
           <button className="btn btn-secondary text-secondary-content">
             <PublicIcon />
