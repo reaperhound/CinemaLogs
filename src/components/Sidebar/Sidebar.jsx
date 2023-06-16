@@ -87,7 +87,7 @@ const Sidebar = () => {
                       `}
                   key={id}
                   to={"/"}
-                  onClick={() => dispatch(selectGenreOrCategory(value))}
+                  onClick={() => dispatch(selectGenreOrCategory(id))}
                 >
                   {/* Label */}
                   <div className=" min-w-[60%] mr-2 pl-2 ">

@@ -20,7 +20,7 @@ import {
   PlusOne,
   Remove,
 } from "@mui/icons-material";
-import { Modal } from "@mui/material";
+import Modal from "./Modal";
 
 const MovieInformation = () => {
   const { id } = useParams();
@@ -31,6 +31,8 @@ const MovieInformation = () => {
   const currentTheme = useSelector((state) => state.themeSlice);
 
   const [open, setOpen] = useState(false);
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -73,7 +75,11 @@ const MovieInformation = () => {
   return (
     <div
       className={`bg-gradient-to-r lg:pl-[5vw] relative 
-    ${currentTheme === "halloween" ? "text-white from-dark-grad-one to-dark-grad-two " : "text-white from-light-grad-two to-light-grad-one"}
+    ${
+      currentTheme === "halloween"
+        ? "text-white from-dark-grad-one to-dark-grad-two "
+        : "text-white from-light-grad-two to-light-grad-one"
+    }
     `}
     >
       {/* backdrop */}
@@ -88,11 +94,11 @@ const MovieInformation = () => {
 
       {/* blur image */}
       <img
-          loading="lazy"
-          className="lg:w-[95vw] lg:h-full lg:mt-0 w-[120vw] blur-[190px] h-[100vh] mt-[-43vh] sm:blur[20px] opacity-90  brightness-[50%] shadow-inner relative overflow-hidden z-0"
-          src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
-          alt="Poster"
-        />
+        loading="lazy"
+        className="lg:w-[95vw] lg:h-full lg:mt-0 w-[120vw] blur-[190px] h-[100vh] mt-[-43vh] sm:blur[20px] opacity-90  brightness-[50%] shadow-inner relative overflow-hidden z-0"
+        src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
+        alt="Poster"
+      />
 
       {/* Poster */}
       <div className="lg:mt-[-140vh] relative lg:ml-14 ml-5 mt-[-110vh] mb-10">
@@ -105,9 +111,7 @@ const MovieInformation = () => {
       </div>
 
       {/* Info */}
-      <div
-        className={`lg:ml-14 ml-5 z-20 relative text-white lg:mt-3`}
-      >
+      <div className={`lg:ml-14 ml-5 z-20 relative text-white lg:mt-3`}>
         {/* release_date */}
         <h1 className={`text-2xl mt-1 font-medium`}>
           {data?.release_date.substring(0, 4)}
@@ -184,7 +188,7 @@ const MovieInformation = () => {
             &nbsp; IMDB
           </button>
         </Link>
-        <Link onClick={() => setOpen(true)} to="#">
+        <Link onClick={() => setModalOpen(true)} to="#">
           <button className="btn btn-secondary text-secondary-content">
             <VideoLibraryIcon />
             &nbsp; Trailer
@@ -215,7 +219,7 @@ const MovieInformation = () => {
         )}
       </div>
 
-      <Modal
+      {/* <Modal
         closeAfterTransition
         className="flex items-center justify-center"
         open={open}
@@ -231,7 +235,16 @@ const MovieInformation = () => {
             frameborder="0"
           />
         )}
-      </Modal>
+      </Modal> */}
+      {/* <Modal setModalOpen={setModalOpen} 
+        ytubeUrl={`https://www.youtube.com/embed/${data.videos.results[0].key}`} 
+      /> */}
+      {/* Modal */}
+      { modalOpen && (
+        data?.videos?.results?.length > 0 && <Modal setModalOpen={setModalOpen} 
+        ytubeURL={`https://www.youtube.com/embed/${data.videos.results[0].key}`} 
+      />
+      )}
     </div>
   );
 };

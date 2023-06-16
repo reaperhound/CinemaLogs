@@ -50,17 +50,17 @@ const Actors = () => {
         />
 
         {/* Actor Image */}
-        <div className="lg:w-[150%] w-[70vw] lg:ml-[-25vw] lg:mt-[15vh] mt-[-80vh] mx-auto relative">
+        <div className="lg:ml-[vw] lg:mt-[15vh] mt-[-80vh] mx-auto relative lg:absolute">
           <img
             loading="lazy"
-            className="rounded-md shadow-md"
+            className="lg:max-w-[21vw] rounded-md shadow-md w-"
             src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
             alt={data.name}
           />
         </div>
 
         {/* Info */}
-        <div className="lg:max-w-[60%] lg:ml-[20vw] lg:mt-[-27vh] lg:mr-[5vw] mt-[-5vh] flex flex-col justify-center items-center relative">
+        <div className="lg:max-w-[60%] lg:ml-[40vw] lg:mt-[5.5vh] lg:mr-[5vw] mt-[-5vh] flex flex-col justify-center items-center lg:absolute relative">
           {/* Name */}
           <h1 className="mb-4 mt-[9vh] text-4xl font-bold">{data.name}</h1>
           {/* Birthday */}
@@ -69,7 +69,7 @@ const Actors = () => {
           </span>
           {/* Bio */}
           <p className="p-6 text-base font-medium lg:text-lg lg:p-0">
-            {data.biography.substring(0,1264)}...
+            {data.biography.substring(0,845)}...
           </p>
 
           {/* Links */}
