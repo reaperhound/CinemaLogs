@@ -110,17 +110,17 @@ const MovieInformation = () => {
       >
         {/* release_date */}
         <h1 className={`text-2xl mt-1 font-medium`}>
-          {data.release_date.substring(0, 4)}
+          {data?.release_date.substring(0, 4)}
         </h1>
 
         {/* title */}
         <h1 className="sm:text-4xl text-3xl mt-1 lg:pt-3 font-bold">
-          {data.title}
+          {data?.title}
         </h1>
         <div className="mt-3 lg:mt-6">
           {/* rating */}
           <span className="text-md font-semibold py-2  px-4 w-[50px] mt-1 h-6 bg-primary">
-            {data.vote_average}
+            {data?.vote_average}
           </span>
 
           {/* rating count */}
