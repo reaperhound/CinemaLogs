@@ -30,7 +30,11 @@ const Sidebar = () => {
       <div className="z-[80] max-w-[60px] absolute">
         {/* Logo */}
         <Link to={"/"} className="py-6 mx-auto animate-spin animate-once ">
-          <img src={genreIcons.logo} alt="logo" className="w-2/3 mx-auto mt-6" />{" "}
+          <img
+            src={genreIcons.logo}
+            alt="logo"
+            className="w-2/3 mx-auto mt-6"
+          />{" "}
         </Link>
 
         {/* Categories */}
@@ -75,7 +79,7 @@ const Sidebar = () => {
             {isFetching ? (
               <ReactLoading type="bubbles" color="#f9d72f" />
             ) : (
-              data.genres.map(({ name, id }) => (
+              data?.genres.map(({ name, id }) => (
                 <Link
                   className={`duration-300 hover:ml-[1.4%] cursor-pointer py-6 lg:w-[180px]
                       ml-[-60%] group h-[30px] flex justify-center items-center 
@@ -94,7 +98,7 @@ const Sidebar = () => {
                     <p className="text-sm whitespace-nowrap ">{name}</p>
                   </div>
 
-                    {/* Image PNG */}
+                  {/* Image PNG */}
                   <div className="">
                     <img
                       src={genreIcons[name.toLowerCase()]}
